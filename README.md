@@ -29,23 +29,27 @@ Antes de iniciar o projeto, certifique-se de ter instalado:
 2. **Instale as dependências:**
    ```bash
    npm install
+   ```
    ou
+   ```bash
    yarn install
    ```
 
-3. **Crie um arquivo `.env.local` e configure a URL do Broker MQTT utilizado:**
+4. **Crie um arquivo `.env.local` e configure a URL do Broker MQTT utilizado:**
    ```
-   NEXT_PUBLIC_HA_API_URL=http://SEUSERVIDOR
+   NEXT_PUBLIC_API_URL=http://SEUBROKER
    ```
 
-4. **Inicie o servidor de desenvolvimento:**
+5. **Inicie o servidor de desenvolvimento:**
    ```bash
    npm run dev
+   ```
    ou
+   ```bash
    yarn dev
    ```
 
-5. **Acesse no navegador:**
+6. **Acesse no navegador:**
    ```
    http://localhost:3000
    ```
