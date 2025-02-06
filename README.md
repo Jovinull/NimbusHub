@@ -33,7 +33,7 @@ Antes de iniciar o projeto, certifique-se de ter instalado:
    yarn install
    ```
 
-3. **Crie um arquivo `.env.local` e configure a URL do Home Assistant:**
+3. **Crie um arquivo `.env.local` e configure a URL do Broker MQTT utilizado:**
    ```
    NEXT_PUBLIC_HA_API_URL=http://homeassistant.local:8123
    NEXT_PUBLIC_HA_TOKEN=seu_token_aqui
