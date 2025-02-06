@@ -23,7 +23,7 @@ class WeatherService {
       rain: null,
     };
 
-    this.client = mqtt.connect("wss://c0b8968ed7994cfda96d1e16cd970924.s1.eu.hivemq.cloud:8884/mqtt");
+    this.client = mqtt.connect("wss://c0b8968ed7994cfda96d1e16cd9709243a0402e73e714189a5fdf292baf01769.s1.eu.hivemq.cloud:8884/mqtt");
 
     this.client.on("connect", () => {
       console.log("✅ Conectado ao MQTT");
