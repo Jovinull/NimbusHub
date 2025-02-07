@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: var(--container-bg-color);
+    box-shadow: 1px 1px 5px #c6c8cb;
+    padding: 10px 0;
+    color: var(--primary-text-color);
+}

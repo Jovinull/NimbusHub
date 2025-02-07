@@ -1,0 +1,22 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: flex-end;
+    align-self: center;
+    background-color: var(--container-bg-color);
+    width: 100vw;
+    box-shadow: 1px 1px 5px #c6c8cb;
+    padding: 10px 0;
+}
+
+.links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.links > li > a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+}
