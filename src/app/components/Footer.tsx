@@ -5,9 +5,9 @@ export default function Footer() {
         <footer className={styles.footer}>
             <h3>NimbusHub, 2025</h3>
             <ul className={styles.links}>
-                <li><a href="https://github.com/Jovinull/NimbusHub">GitHub</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contatos</a></li>
+                <li><a target="_blank" href="https://github.com/Jovinull/NimbusHub">GitHub</a></li>
+                <li><a target="_blank" href="#">Sobre</a></li>
+                <li><a target="_blank" href="#">Contatos</a></li>
             </ul>
         </footer>
     )
