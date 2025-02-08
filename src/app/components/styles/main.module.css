@@ -1,0 +1,15 @@
+.tempContainer, .humidityContainer {
+    width: 300px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
