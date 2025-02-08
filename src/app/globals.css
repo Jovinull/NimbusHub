@@ -9,6 +9,7 @@ body {
 body {
   background-color: var(--bg-color);
   font-family: var(--font-family);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

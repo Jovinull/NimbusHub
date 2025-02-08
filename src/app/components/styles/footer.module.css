@@ -6,6 +6,7 @@
     width: 100vw;
     box-shadow: 1px 1px 5px #c6c8cb;
     padding: 10px 0;
+    justify-self: flex-end;
 }
 
 .links {
