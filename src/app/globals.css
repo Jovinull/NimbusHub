@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+/* Definição de temas */
+:root {
+  --bg-color: #f9f9f9;
+  --text-color: #111;
+  --header-footer-bg: #e2e8f0;
+  --chart-bg: #ffffff;
+  --chart-grid: #cccccc;
+}
+
+/* Modo escuro */
+.dark {
+  --bg-color: #111;
+  --text-color: #f9f9f9;
+  --header-footer-bg: #1e293b;
+  --chart-bg: #1e293b;
+  --chart-grid: #555555;
+}
+
+/* Aplicação das variáveis */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header, footer {
+  background-color: var(--header-footer-bg);
+  transition: background-color 0.3s ease;
+}

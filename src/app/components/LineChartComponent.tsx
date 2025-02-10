@@ -11,7 +11,7 @@ interface ChartProps {
 
 export default function LineChartComponent({ data, color = "#8884d8", title }: ChartProps) {
   const [history, setHistory] = useState<{ time: string; value: number }[]>([
-    { time: "00:00", value: 20 }, // Valor padrão inicial
+    { time: "00:00", value: 20 },
   ]);
 
   useEffect(() => {
@@ -21,24 +21,20 @@ export default function LineChartComponent({ data, color = "#8884d8", title }: C
 
       setHistory((prev) => {
         const newHistory = [...prev, { time: timeString, value: data }];
-
-        if (newHistory.length > 20) {
-          newHistory.shift();
-        }
-
+        if (newHistory.length > 20) newHistory.shift();
         return newHistory;
       });
     }
   }, [data]);
 
   return (
-    <div className="bg-gray-800 p-4 rounded-xl shadow-lg">
+    <div className="p-4 rounded-xl shadow-lg" style={{ backgroundColor: "var(--chart-bg)" }}>
       <h2 className="text-lg font-bold mb-2">{title}</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={history}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis />
+          <CartesianGrid stroke="var(--chart-grid)" strokeDasharray="3 3" />
+          <XAxis dataKey="time" stroke="var(--text-color)" />
+          <YAxis stroke="var(--text-color)" />
           <Tooltip />
           <Line type="monotone" dataKey="value" stroke={color} />
         </LineChart>

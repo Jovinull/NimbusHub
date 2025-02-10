@@ -11,7 +11,7 @@ interface ChartProps {
 
 export default function BarChartComponent({ data, color = "#FF7300", title }: ChartProps) {
   const [history, setHistory] = useState<{ time: string; value: number }[]>([
-    { time: "00:00", value: 5 }, // Valor padrão inicial
+    { time: "00:00", value: 5 },
   ]);
 
   useEffect(() => {
@@ -21,24 +21,20 @@ export default function BarChartComponent({ data, color = "#FF7300", title }: Ch
 
       setHistory((prev) => {
         const newHistory = [...prev, { time: timeString, value: data }];
-
-        if (newHistory.length > 10) {
-          newHistory.shift();
-        }
-
+        if (newHistory.length > 10) newHistory.shift();
         return newHistory;
       });
     }
   }, [data]);
 
   return (
-    <div className="bg-gray-800 p-4 rounded-xl shadow-lg">
+    <div className="p-4 rounded-xl shadow-lg" style={{ backgroundColor: "var(--chart-bg)" }}>
       <h2 className="text-lg font-bold mb-2">{title}</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={history}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis />
+          <CartesianGrid stroke="var(--chart-grid)" strokeDasharray="3 3" />
+          <XAxis dataKey="time" stroke="var(--text-color)" />
+          <YAxis stroke="var(--text-color)" />
           <Tooltip />
           <Bar dataKey="value" fill={color} />
         </BarChart>

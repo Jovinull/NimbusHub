@@ -18,7 +18,7 @@ export default function ValueBox({ data, title, unit = "" }: ValueBoxProps) {
   }, [data]);
 
   return (
-    <div className="bg-gray-800 p-6 rounded-xl shadow-lg text-center">
+    <div className="p-6 rounded-xl shadow-lg text-center transition-all" style={{ backgroundColor: "var(--chart-bg)" }}>
       <h2 className="text-lg font-bold mb-2">{title}</h2>
       <p className="text-3xl font-bold">{value}{unit}</p>
     </div>

@@ -17,11 +17,10 @@ export default function GaugeChartComponent({ data, title }: ChartProps) {
     }
   }, [data]);
 
-  // Definição dos dados do gráfico
   const chartData = [{ name: title, value }];
 
   return (
-    <div className="bg-gray-800 p-4 rounded-xl shadow-lg">
+    <div className="p-4 rounded-xl shadow-lg transition-all" style={{ backgroundColor: "var(--chart-bg)" }}>
       <h2 className="text-lg font-bold mb-2">{title}</h2>
       <ResponsiveContainer width="100%" height={300}>
         <RadialBarChart
