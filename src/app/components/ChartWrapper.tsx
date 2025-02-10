@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 
 // Importa dinamicamente o Chart e desativa SSR
-const Chart = dynamic(() => import('./Chart'), { ssr: false });
+const Chart = dynamic(() => import('./LineChartComponent'), { ssr: false });
 
 interface ChartWrapperProps {
     data: number | null;

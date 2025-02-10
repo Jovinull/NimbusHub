@@ -9,8 +9,10 @@ interface ChartProps {
   title: string;
 }
 
-export default function Chart({ data, color = "#8884d8", title }: ChartProps) {
-  const [history, setHistory] = useState<{ time: string; value: number }[]>([]);
+export default function LineChartComponent({ data, color = "#8884d8", title }: ChartProps) {
+  const [history, setHistory] = useState<{ time: string; value: number }[]>([
+    { time: "00:00", value: 20 }, // Valor padrão inicial
+  ]);
 
   useEffect(() => {
     if (data !== null) {
@@ -20,7 +22,6 @@ export default function Chart({ data, color = "#8884d8", title }: ChartProps) {
       setHistory((prev) => {
         const newHistory = [...prev, { time: timeString, value: data }];
 
-        // Limita o número de pontos no gráfico para evitar sobrecarga visual
         if (newHistory.length > 20) {
           newHistory.shift();
         }
@@ -33,11 +34,6 @@ export default function Chart({ data, color = "#8884d8", title }: ChartProps) {
   return (
     <div className="bg-gray-800 p-4 rounded-xl shadow-lg">
       <h2 className="text-lg font-bold mb-2">{title}</h2>
-      {data === null && (
-        <div className="bg-yellow-500 text-black p-2 mb-2 text-center rounded">
-          ⚠️ Dados não disponíveis!
-        </div>
-      )}
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={history}>
           <CartesianGrid strokeDasharray="3 3" />
