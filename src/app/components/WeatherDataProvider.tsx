@@ -1,45 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import mqtt from "mqtt";
+import { weatherService } from "@/Service/WeatherService";
 import LineChartComponent from "./LineChartComponent";
 import GaugeChartComponent from "./GaugeChartComponent";
 import BarChartComponent from "./BarChartComponent";
 import ValueBox from "./ValueBox";
 
 export default function WeatherDataProvider() {
-    const [weatherData, setWeatherData] = useState({
-        temperature: null,
-        humidity: null,
-        pressure: null,
-        windSpeed: null,
-        rain: null,
-    });
+    const [weatherData, setWeatherData] = useState(weatherService.getWeatherData());
 
     useEffect(() => {
-        const client = mqtt.connect(
-            "wss://c0b8968ed7994cfda96d1e16cd9709243a0402e73e714189a5fdf292baf01769.s1.eu.hivemq.cloud:8884/mqtt"
-        );
-
-        client.on("connect", () => {
-            console.log("✅ Conectado ao MQTT");
-            client.subscribe("weather/#");
-        });
-
-        client.on("message", (topic, message) => {
-            const value = message.toString();
-            setWeatherData((prev) => ({
-                ...prev,
-                [topic.replace("weather/", "")]: isNaN(parseFloat(value)) ? value : parseFloat(value),
-            }));
-        });
-
-        return () => {
-            client.end();
-        };
+        // Subscreve à Service para receber atualizações
+        weatherService.subscribe(setWeatherData);
     }, []);
 
-    // ✅ Extraindo corretamente os valores do estado
     const { temperature, humidity, pressure, windSpeed, rain } = weatherData;
 
     return (

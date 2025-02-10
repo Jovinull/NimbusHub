@@ -12,6 +12,7 @@ type WeatherData = {
 class WeatherService {
   private client: mqtt.MqttClient;
   private weatherData: WeatherData;
+  private listeners: ((data: WeatherData) => void)[] = [];
 
   constructor() {
     this.weatherData = {
@@ -23,7 +24,9 @@ class WeatherService {
       rain: null,
     };
 
-    this.client = mqtt.connect("wss://c0b8968ed7994cfda96d1e16cd9709243a0402e73e714189a5fdf292baf01769.s1.eu.hivemq.cloud:8884/mqtt");
+    this.client = mqtt.connect(
+      "wss://c0b8968ed7994cfda96d1e16cd9709243a0402e73e714189a5fdf292baf01769.s1.eu.hivemq.cloud:8884/mqtt"
+    );
 
     this.client.on("connect", () => {
       console.log("✅ Conectado ao MQTT");
@@ -58,10 +61,21 @@ class WeatherService {
       default:
         console.warn(`Tópico desconhecido: ${topic}`);
     }
+
+    this.notifyListeners();
   }
 
-  // Método para obter os dados atualizados
+  private notifyListeners() {
+    this.listeners.forEach((callback) => callback(this.weatherData));
+  }
+
+  public subscribe(callback: (data: WeatherData) => void) {
+    this.listeners.push(callback);
+  }
+
   public getWeatherData(): WeatherData {
     return this.weatherData;
   }
 }
+
+export const weatherService = new WeatherService();
