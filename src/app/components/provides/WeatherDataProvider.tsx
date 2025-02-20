@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { weatherService } from "@/Service/WeatherService";
-import LineChartComponent from "./LineChartComponent";
-import GaugeChartComponent from "./GaugeChartComponent";
-import BarChartComponent from "./BarChartComponent";
-import ValueBox from "./ValueBox";
-import HeatmapChartComponent from "./HeatmapChartComponent";
-import RadarChartComponent from "./RadarChartComponent";
+import LineChartComponent from "../graphs/LineChartComponent";
+import GaugeChartComponent from "../graphs/GaugeChartComponent";
+import BarChartComponent from "../graphs/BarChartComponent";
+import ValueBox from "../graphs/ValueBox";
+import HeatmapChartComponent from "../graphs/HeatmapChartComponent";
+import RadarChartComponent from "../graphs/RadarChartComponent";
 
 export default function WeatherDataProvider() {
     const [weatherData, setWeatherData] = useState(weatherService.getWeatherData());

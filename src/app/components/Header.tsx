@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "./provides/ThemeProvider";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function Header() {

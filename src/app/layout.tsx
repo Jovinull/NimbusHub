@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ThemeProvider } from "./components/ThemeProvider"; // ✅ Importando o ThemeProvider
+import { ThemeProvider } from "./components/provides/ThemeProvider"; // ✅ Importando o ThemeProvider
 
 export const metadata: Metadata = {
   title: "NimbusHub",
