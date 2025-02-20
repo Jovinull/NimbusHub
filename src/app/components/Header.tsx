@@ -17,19 +17,26 @@ export default function Header() {
           <li>
             <Link
               href="/"
-              className={`hover:underline ${
-                pathname === "/" ? "text-blue-600 dark:text-blue-400" : ""
-              }`}
+              className={`hover:underline ${pathname === "/" ? "text-blue-600 dark:text-blue-400" : ""
+                }`}
             >
               Dashboard
             </Link>
           </li>
           <li>
             <Link
+              href="/history"
+              className={`hover:underline ${pathname === "/history" ? "text-blue-600 dark:text-blue-400" : ""
+                }`}
+            >
+              Histórico
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/about"
-              className={`hover:underline ${
-                pathname === "/about" ? "text-blue-600 dark:text-blue-400" : ""
-              }`}
+              className={`hover:underline ${pathname === "/about" ? "text-blue-600 dark:text-blue-400" : ""
+                }`}
             >
               Sobre
             </Link>

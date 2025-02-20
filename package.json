@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.5",
+    "axios": "^1.7.9",
     "mqtt": "^5.10.3",
     "next": "15.1.6",
     "nimbus-hub": "file:",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
+    "react-datepicker": "^8.1.0",
     "react-dom": "^19.0.0",
     "react-icon": "^1.0.0",
     "react-icons": "^5.4.0",

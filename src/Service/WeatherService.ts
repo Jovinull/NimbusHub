@@ -1,4 +1,5 @@
 import mqtt from "mqtt";
+import axios from "axios";
 
 type WeatherData = {
   temperature: number | null;
@@ -8,6 +9,10 @@ type WeatherData = {
   windDirection: string | null;
   rain: number | null;
 };
+
+const mqttUrl = process.env.NEXT_PUBLIC_MQTT_URL as string;
+const topic = process.env.NEXT_PUBLIC_MQTT_TOPIC as string;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
 class WeatherService {
   private client: mqtt.MqttClient;
@@ -24,13 +29,11 @@ class WeatherService {
       rain: null,
     };
 
-    this.client = mqtt.connect(
-      "wss://c0b8968ed7994cfda96d1e16cd9709243a0402e73e714189a5fdf292baf01769.s1.eu.hivemq.cloud:8884/mqtt"
-    );
+    this.client = mqtt.connect(mqttUrl);
 
     this.client.on("connect", () => {
       console.log("✅ Conectado ao MQTT");
-      this.client.subscribe("weather/#");
+      this.client.subscribe(topic);
     });
 
     this.client.on("message", (topic, message) => {
@@ -75,6 +78,18 @@ class WeatherService {
 
   public getWeatherData(): WeatherData {
     return this.weatherData;
+  }
+}
+
+export async function fetchWeatherHistory(start: string, end: string) {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/weather/history`, {
+      params: { start, end },
+    });
+    return response.data.data || [];
+  } catch (error) {
+    console.error("Erro ao buscar histórico de clima:", error);
+    return [];
   }
 }
 
