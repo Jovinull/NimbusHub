@@ -6,6 +6,8 @@ import LineChartComponent from "./LineChartComponent";
 import GaugeChartComponent from "./GaugeChartComponent";
 import BarChartComponent from "./BarChartComponent";
 import ValueBox from "./ValueBox";
+import HeatmapChartComponent from "./HeatmapChartComponent";
+import RadarChartComponent from "./RadarChartComponent";
 
 export default function WeatherDataProvider() {
     const [weatherData, setWeatherData] = useState(weatherService.getWeatherData());
@@ -23,6 +25,14 @@ export default function WeatherDataProvider() {
             <LineChartComponent data={humidity} title="Umidade (%)" color="#0088FE" />
             <BarChartComponent data={rain} title="Chuva (mm)" color="#00C49F" />
             <GaugeChartComponent data={windSpeed} title="Velocidade do Vento (km/h)" />
+            <HeatmapChartComponent data={pressure} title="Pressão Atmosférica (hPa)" />
+            <RadarChartComponent 
+                temperature={temperature} 
+                humidity={humidity} 
+                pressure={pressure} 
+                windSpeed={windSpeed} 
+                rain={rain} 
+            />
         </main>
     );
 }
